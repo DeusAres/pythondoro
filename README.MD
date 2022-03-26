@@ -1,4 +1,6 @@
-# 🍅🐍 Pythondoro - Another pomodoro app
+# 🐍🍅 Pythondoro - Another pomodoro app
+
+![banner](banner.jpg)
 Simple, minimal, small timer with always on top function  
 Lovely made ❤ with [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI/)
 
@@ -30,7 +32,12 @@ Always on top function works only if you don't enter fullscreen apps.
 Notably, videogames enter fullscreen. Consider changing the video settings of your game from fullscreen to boarderless window/boarderless fullscreen.  
 If not available, run this [Boarderless-Gaming](https://github.com/Codeusa/Borderless-Gaming/releases) and change your game settings to windowed, adjusting the resolution to match your screen
 
+## 🔍 Known bugs 
 
+- Right-clicking on window (not on top) pauses the timer until right-click menu is not closed  
+    - This is more or less a problem of PySimpleGUI that I've yet to discover how to solve
+- Setting window pauses the timer until closed  
+    - I would have to change to many things. I just designed it while coding it with no modularity in mind so it is what it is `¯\_(ツ)_/¯`
 
 ## 🐛 Prone to bugs  
 This code has been written only to remove the idea from my head

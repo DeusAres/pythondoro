@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 import settings
+import image
 
 def settingsWin():
     sets = settings.read()
@@ -39,8 +40,8 @@ def noTop(moment='Productivity time', disabled=True):
                 ], element_justification='center')
             ]
         ]
-
-    window = sg.Window('Yet another pomodoro', l, right_click_menu=['', ['Settings']], finalize=True)
+    print(type(image.icon))
+    window = sg.Window('Pythondoro', l, icon=image.icon, right_click_menu=['', ['Settings']], finalize=True)
     return window
 
 def onTop(moment='Productivity time'):
@@ -51,7 +52,7 @@ def onTop(moment='Productivity time'):
                 ], element_justification='center'),
             ]
         ]   
-    window = sg.Window('', l,   no_titlebar=True,
+    window = sg.Window('Pythondoro', l, icon=image.icon, no_titlebar=True,
                                 size=(200,30), 
                                 margins=(0,0),
                                 keep_on_top=True,
