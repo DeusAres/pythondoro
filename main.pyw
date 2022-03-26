@@ -2,8 +2,12 @@ import PySimpleGUI as sg
 import settings
 from playsound import playsound
 from threading import Thread
+from pathlib import Path
 import gui
 import traceback
+import os
+
+os.chdir(Path(__file__).parents[0])
 
 sg.LOOK_AND_FEEL_TABLE["DarkPoker"] = {
     "BACKGROUND": "#252525",
