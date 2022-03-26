@@ -34,9 +34,9 @@ def updateTimer():
 def play():
     try:
         if getMoment() == 'Productivity time':
-            playsound('./sounds/pause.mp3')
-        elif getMoment() == 'Break time':
             playsound('./sounds/pomodoro.mp3')
+        elif getMoment() == 'Break time':
+            playsound('./sounds/pause.mp3')
     except:
         print(traceback.format_exc())
 
