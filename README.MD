@@ -1,5 +1,5 @@
 # 🍅🐍 Pythondoro - Another pomodoro app
-Simple, minimal, small timer with always on top function
+Simple, minimal, small timer with always on top function  
 Lovely made ❤ with [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI/)
 
 ## 🔧 Installation  
