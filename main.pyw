@@ -133,9 +133,9 @@ def main():
         if event == 'Settings':
             window.close()
             saved = gui.settingsWin()
+            window = gui.noTop(getMoment(), not clockRunning)
             if saved:
                 sets = settings.read()
-                window = gui.noTop(getMoment(), not clockRunning)
                 secondsToElapse = sets['pomodoro'] * 60
                 updateTimer()
                 window['inWhichMoment'].Update('Productivity time')

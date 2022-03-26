@@ -52,7 +52,8 @@ def onTop(moment='Productivity time'):
             ]
         ]   
     window = sg.Window('', l,   no_titlebar=True,
-                                size=(200,40), 
+                                size=(200,30), 
+                                margins=(0,0),
                                 keep_on_top=True,
                                 grab_anywhere=True,
                                 right_click_menu=['', ['Enlarge']],
