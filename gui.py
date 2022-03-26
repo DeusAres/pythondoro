@@ -3,6 +3,7 @@ import settings
 
 def settingsWin():
     sets = settings.read()
+    saved = False
     layout = [
         [
             [sg.Text('Pomodoro lenght', s=(20,1)), sg.Input(sets['pomodoro'], key='pomodoro')],
@@ -19,11 +20,14 @@ def settingsWin():
 
         if event in [sg.WINDOW_CLOSED, 'Discard', 'Save']:
             if event == 'Save':
+                saved = True
                 settings.set(values)
             break
 
     window.close()
+    return saved
 
+    
 def noTop(moment='Productivity time', disabled=True):
     s = (6, 1)
     l = [
@@ -43,13 +47,12 @@ def onTop(moment='Productivity time'):
     l = [
             [
                 sg.Column([
-                    [sg.Text(moment, key='inWhichMoment')],
-                    [sg.Text('00:00:00', key='timer')],
+                    [sg.Text(moment, s=(14,1), key='inWhichMoment'), sg.Text('00:00:00', s=(8, 1), key='timer')],
                 ], element_justification='center'),
             ]
         ]   
     window = sg.Window('', l,   no_titlebar=True,
-                                auto_size_buttons=False,
+                                size=(200,40), 
                                 keep_on_top=True,
                                 grab_anywhere=True,
                                 right_click_menu=['', ['Enlarge']],

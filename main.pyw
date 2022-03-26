@@ -88,7 +88,7 @@ def main():
 
         if secondsToElapse == 0:
             first = ['Productivity time', 'autopause', 'pause']
-            second = ['Break time', 'autpomodoro', 'pomodoro']
+            second = ['Break time', 'autopomodoro', 'pomodoro']
 
             def firstSecond(a, b, secondsToElapse, clockRunning):
                 if getMoment() == a[0]:
@@ -105,7 +105,7 @@ def main():
 
             result = firstSecond(first, second, secondsToElapse, clockRunning)
             if not result:
-                result = firstSecond(first, second, secondsToElapse, clockRunning)
+                result = firstSecond(second, first, secondsToElapse, clockRunning)
             if result:
                 secondsToElapse, clockRunning = result
             """
@@ -132,12 +132,14 @@ def main():
         
         if event == 'Settings':
             window.close()
-            gui.settingsWin()
-            sets = settings.read()
-            window = gui.noTop(getMoment(), not clockRunning)
-            secondsToElapse = sets['pomodoro'] * 60
-            updateTimer()
-            clockRunning = False
+            saved = gui.settingsWin()
+            if saved:
+                sets = settings.read()
+                window = gui.noTop(getMoment(), not clockRunning)
+                secondsToElapse = sets['pomodoro'] * 60
+                updateTimer()
+                window['inWhichMoment'].Update('Productivity time')
+                clockRunning = False
 
         updateTimer()
                 
