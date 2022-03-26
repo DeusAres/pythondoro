@@ -1,2 +1,4 @@
 PySimpleGUI
+pyperclip
 playsound==1.2.2
+

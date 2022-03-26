@@ -25,12 +25,13 @@ def settingsWin():
     window.close()
 
 def noTop(moment='Productivity time', disabled=True):
+    s = (6, 1)
     l = [
             [
                 sg.Column([
                     [sg.Text(moment, key='inWhichMoment')],
                     [sg.Text('00:00:00', key='timer')],
-                    [sg.Button('Start'), sg.Button('Pause', disabled=disabled), sg.Button('Reset'), sg.Button('On top')]
+                    [sg.Button('Start', s=s), sg.Button('Pause', disabled=disabled, s=s), sg.Button('Reset', s=s), sg.Button('On top', s=s)]
                 ], element_justification='center')
             ]
         ]
