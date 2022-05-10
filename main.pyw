@@ -6,6 +6,7 @@ from pathlib import Path
 import gui
 import traceback
 import os
+from win10toast import ToastNotifier
 
 os.chdir(Path(__file__).parents[0])
 
@@ -39,8 +40,22 @@ def main():
     def play():
         try:
             if getMoment() == 'Productivity time':
+                ToastNotifier().show_toast(
+                    "Productivity time",
+                    "Time to work hard!",
+                    duration=10,
+                    icon_path="icon.ico",
+                    threaded=True
+                )
                 playsound('./sounds/pomodoro.mp3')
             elif getMoment() == 'Break time':
+                ToastNotifier().show_toast(
+                    "Break time",
+                    "Chill for a bit, you deserve it",
+                    duration=10,
+                    icon_path="icon.ico",
+                    threaded=True
+                )
                 playsound('./sounds/pause.mp3')
         except:
             print(traceback.format_exc())
@@ -86,7 +101,7 @@ def main():
             if event == 'Enlarge': window = gui.noTop(getMoment(), not clockRunning)
 
 
-        if secondsToElapse == 0:
+        if secondsToElapse == 0 and clockRunning == True:
             first = ['Productivity time', 'autopause', 'pause']
             second = ['Break time', 'autopomodoro', 'pomodoro']
 
@@ -94,9 +109,8 @@ def main():
                 if getMoment() == a[0]:
                     window['inWhichMoment'].Update(b[0])
                     Thread(target=play).start()
-                    if sets[a[1]]:
-                        secondsToElapse = sets[a[2]] * 60
-                    else:
+                    secondsToElapse = sets[a[2]] * 60
+                    if not sets[a[1]]:
                         clockRunning = False
                         #window['Pause'].Update(disabled=True)
 
@@ -152,6 +166,5 @@ if __name__ == '__main__':
     try:
         main()
     except:
-        sg.Popup(traceback.format_exc()+'\n'+'Hit ok to copy the error to clipboard', title='Bug!')
-        sg.Popup('Report it on https://github.com/DeusAres/Pythondoro/issues please!')
+        sg.Popup(traceback.format_exc()+'\n'+'Hit ok to copy the error to clipboard'+'\n'+'Report it on https://github.com/DeusAres/Pythondoro/issues please!', title='Bug!')
         copy(traceback.format_exc())

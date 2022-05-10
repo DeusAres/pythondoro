@@ -40,7 +40,6 @@ def noTop(moment='Productivity time', disabled=True):
                 ], element_justification='center')
             ]
         ]
-    print(type(image.icon))
     window = sg.Window('Pythondoro', l, icon=image.icon, right_click_menu=['', ['Settings']], finalize=True)
     return window
 
